@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<package name="base" extends="struts-default">
+		<action name="*Action" class="{1}Action">
+			<result name="regOk">register.jsp</result>
+			<result name="loginFail">login.jsp</result>
+			<result name="employerIndex" type="redirect">employer/index.htm</result>
+			<result name="studentIndex" type="redirect">student/index.htm</result>
+		</action>
+	</package>
+	
+	<package name="employer" namespace="/employer" extends="struts-default">
+		<action name="index" class="employerAction">
+			<result>index.jsp</result>
+			<result name="pass">password.jsp</result>
+		</action>
+		<action name="exercise" class="exerciseAction">
+			<result name="addExercise">addExercise.jsp</result>
+			<result name="list">exerciseByEmp.jsp</result>
+			<result name="updateExercise">updateExercise.jsp</result>
+			<result name="exerciseMsg">exerciseMsg.jsp</result>
+		</action>
+		<action name="rewards" class="rewardsAction">
+			<result name="addRewards">addRewards.jsp</result>
+			<result name="list">rewardsByEmp.jsp</result>
+			<result name="updateRewards">updateRewards.jsp</result>
+			<result name="rewardsMsg">rewardsMsg.jsp</result>
+		</action>
+		<action name="support" class="supportAction">
+			<result name="list">supportByEmp.jsp</result>
+			<result name="updateSupport">updateSupport.jsp</result>
+			<result name="supportMsg">supportMsg.jsp</result>
+		</action>
+		<action name="task" class="taskAction">
+			<result name="addTask">addTask.jsp</result>
+			<result name="updateTask">updateTask.jsp</result>
+			<result name="taskByEmp">taskByEmp.jsp</result>
+			<result name="taskMsg">taskMsg.jsp</result>
+		</action>
+		
+		<action name="order" class="orderAction">
+			<result name="handle" type="redirectAction">task!taskMsg.htm?task.id=${order.task.id}</result>
+		</action>
+	</package>
+	
+	<package name="student" namespace="/student" extends="struts-default">
+	
+		<action name="index" class="studentAction">
+			<result>index.jsp</result>
+			<result name="pass">password.jsp</result>
+		</action>
+		
+		<action name="rewards" class="rewardsAction">
+			<result name="list">rewardsByEmp.jsp</result>
+			<result name="rewardsMsg">rewardsMsg.jsp</result>			
+		</action>
+		<action name="support" class="supportAction">
+			<result name="addSupport">addSupport.jsp</result>
+			<result name="list">supportByEmp.jsp</result>			
+		</action>
+		<action name="exercise" class="exerciseAction">			
+			<result name="list">exerciseByEmp.jsp</result>			
+			<result name="exerciseMsg">exerciseMsg.jsp</result>
+		</action>
+		
+		<action name="task" class="taskAction">
+			<result name="taskList">taskList.jsp</result>
+			<result name="taskMsg">taskMsg.jsp</result>
+		</action>
+		
+		<action name="order" class="orderAction">
+			<result name="addOrder" type="redirectAction">task!taskMsg.htm?task.id=${order.task.id}</result>
+			<result name="comment" type="redirectAction">task!taskMsg.htm?task.id=${order.task.id}</result>
+			<result name="orderList">orderList.jsp</result>
+		</action>
+	</package>
+	
+	<package name="admin" namespace="/admin" extends="struts-default">
+		<action name="index" class="adminAction">
+			<result name="index" type="redirect">index.jsp</result>
+			<result name="fail">login.jsp</result>
+			<result name="pass">password.jsp</result>
+		</action>
+		<action name="exercise" class="exerciseAction">
+			<result name="addExercise">addExercise.jsp</result>
+			<result name="list">exerciseList.jsp</result>
+			<result name="exerciseMsg">exerciseMsg.jsp</result>
+			<result name="updateExercise">updateExercise.jsp</result>			
+		</action>
+		<action name="rewards" class="rewardsAction">
+			<result name="list">rewardsList.jsp</result>
+			<result name="updateRewards">updateRewards.jsp</result>
+			<result name="rewardsMsg">rewardsMsg.jsp</result>
+			<result name="addRewards">addRewards.jsp</result>			
+		</action>
+		<action name="support" class="supportAction">
+			<result name="list">supportList.jsp</result>
+			<result name="updateSupport">updateSupport.jsp</result>
+			<result name="supportMsg">supportMsg.jsp</result>
+			<result name="addSupport">addSupport.jsp</result>
+			<!-- <result name=""></result> -->			
+		</action>
+		<action name="student" class="studentAction">
+			<result name="list">studentList.jsp</result>
+		</action>
+		
+		<action name="employer" class="employerAction">
+			<result name="list">employerList.jsp</result>
+		</action>
+		
+		<action name="task" class="taskAction">
+			<result name="taskList">taskList.jsp</result>
+			<result name="taskMsg">taskMsg.jsp</result>
+		</action>
+		
+		<action name="order" class="orderAction">
+			<result name="delete" type="redirectAction">task!taskMsg.htm?task.id=${order.task.id}</result>
+		</action>
+	</package>
+</struts>

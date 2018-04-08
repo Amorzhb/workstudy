@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml">
+		</property>
+		<property name="mappingResources">
+		<list>		
+		</list>
+		</property>
+	</bean>
+	
+	<bean id="baseAction" class="com.lzl.work.action.BaseAction" autowire="byName" scope="prototype"></bean>
+	
+	<bean id="employerDao" class="com.lzl.work.employer.dao.EmployerDao">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="employerAction" class="com.lzl.work.employer.action.EmployerAction" autowire="byName" scope="prototype"></bean>
+
+	<bean id="studentDao" class="com.lzl.work.student.dao.StudentDao">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="studentAction" class="com.lzl.work.student.action.StudentAction" autowire="byName" scope="prototype"></bean>
+	
+	<bean id="taskDao" class="com.lzl.work.dao.TaskDao">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="taskAction" class="com.lzl.work.action.TaskAction" autowire="byName" scope="prototype"></bean>
+	
+	<bean id="orderDao" class="com.lzl.work.dao.OrderDao">
+	<property name="sessionFactory" ref="sessionFactory"></property></bean>
+	<bean id="orderAction" class="com.lzl.work.action.OrderAction" autowire="byName" scope="prototype"></bean>
+	
+	<bean id="adminDao" class="com.lzl.work.dao.AdminDao">
+	<property name="sessionFactory" ref="sessionFactory"></property></bean>
+	<bean id="adminAction" class="com.lzl.work.action.AdminAction" autowire="byName" scope="prototype"></bean>
+	
+	<bean id="rewardsDao" class="com.lzl.work.dao.RewardsDao">
+	<property name="sessionFactory" ref="sessionFactory"></property></bean>
+	<bean id="rewardsAction" class="com.lzl.work.action.RewardsAction" autowire="byName" scope="prototype"></bean>
+	
+	<bean id="supportDao" class="com.lzl.work.dao.SupportDao">
+	<property name="sessionFactory" ref="sessionFactory"></property></bean>
+	<bean id="supportAction" class="com.lzl.work.action.SupportAction" autowire="byName" scope="prototype"></bean>
+	
+	<bean id="exerciseDao" class="com.lzl.work.dao.ExerciseDao">
+	<property name="sessionFactory" ref="sessionFactory"></property></bean>
+	<bean id="exerciseAction" class="com.lzl.work.action.ExerciseAction" autowire="byName" scope="prototype"></bean>
+	
+</beans>
